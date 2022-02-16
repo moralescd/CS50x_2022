@@ -1,0 +1,12 @@
+# Notes week 0
+
+## 2/16/2022
+Today I learned how to use git through the terminal.
+I learned:
+- git checkout -b <branch_name> == make a new branch and move you into to work
+- git add <file> == adds file to stage to track and later include in commit
+- git status == shows which files have been changed and in stage
+- git commit -m "Message" == will commit all changes with the message as the note (include -a to add all changes, even if not staged)
+- git diff == shows differences (--staged or --cached to see what's staged)
+
+
