@@ -10,7 +10,12 @@ Git terminal commands:
 - git commit -m "Message" == will commit all changes with the message as the note (include -a to add all changes, even if not staged)
 - git diff == shows what is unstaged (--staged or --cached to see what's staged)
 - you can ignore specific filetypes with a .gitignore file so git doesn't flag them as unstaged or automatically include them which I thought was cool
+<<<<<<< HEAD
 - git push origin main
+=======
+- git push origin <branch>
+
+>>>>>>> Week0
 Not git:
 - code <file> == open file in visual studio code
 
