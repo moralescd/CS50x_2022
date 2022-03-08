@@ -93,6 +93,9 @@ Else
 **O(n log n), omega(n log n), theta(n log n)**
 
 
+#### Fastest==Merge
+#### Bubble sort faster than selection if already sorted, only need to look once.
+#### Selection and bubble O(n^2) upper bound
 
 
 
