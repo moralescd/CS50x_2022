@@ -1,0 +1,18 @@
+sort1 uses: Bubble sort
+
+How do you know?: It is much faster when already sorted.
+
+sort2 uses: Merge sort
+
+How do you know?: It is always the fastest of sorting methods.
+
+sort3 uses: Selection sort
+
+How do you know?: Took twice as long for sorted data as sort1 algorithm.
+Faster than sort1 with random and reverse because each loop makes problem smaller.
+
+
+reverse10000    sorted100000    random10000
+sort1:0.353     0.111           0.306
+sort2:0.089     0.063           0.066
+sort3:0.195     0.202           0.165
