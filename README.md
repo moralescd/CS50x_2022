@@ -4,11 +4,4 @@ Taking this course to to gain more CS background and learn new programming langu
 
 Using GitHub as an added ***bonus*** learning experience in version control.
 
-Jon has access to this repo, but he's already got plenty of programming and CS experience. He also he hasn't made any commits, which means it's really just mine.
-
-### SO... Welcome to baby's first real repo 👶
-
-We are learning and growing here 🌻
-
-***-Clarissa***
-
+Welcome to baby's first repo 👶
