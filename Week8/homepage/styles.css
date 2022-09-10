@@ -1,0 +1,87 @@
+body {
+    text-align: center;
+    border: 3px solid Thistle;
+    padding: 30px;
+}
+
+h1, .socials {
+    background-color: LightCoral;
+    padding: 20px;
+    color: LemonChiffon;
+    font-family: "Courier New";
+}
+
+img {
+    padding:10px;
+}
+
+a.profile {
+    color: MistyRose;
+    text-decoration: none;
+}
+
+a.profile:hover {
+    color: DarkSlateBlue;
+    text-decoration: none;
+    font-family: "Lucida Console";
+    font-size: 105%;
+}
+
+.profile-pic {
+    object-position: 0 6%;
+}
+
+.cat-pic, .profile-pic {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.book-pic {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+}
+
+.book-pic-past {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+}
+
+.cat-pic:hover {
+    width: 400px;
+    height: 400px;
+    object-fit: contain;
+}
+
+.book-pic:hover, .book-pic-past:hover {
+    opacity: 50%;
+}
+
+.text-block {
+    height: 500px;
+    width: 500px;
+    overflow: scroll;
+    text-align: left;
+    background-color: white;
+    color: black;
+    border: 5px solid Thistle;
+    display: none;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.close-btn {
+    text-align: center;
+}
+
+.accordion {
+    width: 50%;
+    transform: translate(50%);
+}

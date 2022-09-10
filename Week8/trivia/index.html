@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+        <script>
+            // TODO: Add code to check answers to questions
+            document.addEventListener('DOMContentLoaded', function() {
+
+                //Correct answer clicked
+                let correct = document.querySelector('.correct');
+                correct.addEventListener('click', function() {
+                    correct.style.backgroundColor = 'green';
+                    document.querySelector('#answer1').innerHTML = 'Correct!';
+                });
+
+                //Incorrect answer clicked
+                let incorrects = document.querySelectorAll('.incorrect');
+                for (let i = 0; i < incorrects.length; i++){
+                    incorrects[i].addEventListener('click', function() {
+                        incorrects[i].style.backgroundColor ='red';
+                        document.querySelector('#answer1').innerHTML = 'Incorrect.';
+                });
+                }
+
+                //Check free response
+                document.querySelector('#check').addEventListener('click', function() {
+                    let input = document.querySelector('input');
+                    if (input.value === 'sugar' || input.value === 'butter' || input.value === 'flour') {
+                        input.style.backgroundColor = 'green';
+                        document.querySelector('#answer2_check').innerHTML = 'Correct!';
+                    } else {
+                        input.style.backgroundColor = 'red';
+                        document.querySelector('#answer2_check').innerHTML = 'Incorrect.';
+                    }
+                });
+
+            });
+        </script>
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+
+                <h3>Which brain region is associated with memory?</h3>
+                <p id="answer1"></p>
+                <button class="incorrect">Amygdala</button>
+                <button class="incorrect">Cerebellum</button>
+                <button class="correct">Hippocampus</button>
+                <button class="incorrect">Ventricle</button>
+            </div>
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+
+                <h3>Name one ingredient inside a pie according to the 2015 hit Broadway musical "Waitress" written by Sara Bareilles.</h3>
+                <p id="answer2_check"></p>
+                <input type="text" id="q2a">
+                <br><br>
+                <input type="submit" id="check">
+            </div>
+        </div>
+    </body>
+</html>
