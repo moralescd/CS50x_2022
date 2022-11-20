@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+
+    <table class="container py-5 text-center table table-striped">
+        <thead>
+            <tr>
+                <th class="text-start">Symbol</th>
+                <th class="text-start">Name</th>
+                <th class="text-end">Shares</th>
+                <th class="text-start"></th>
+                <th class="text-end">Price</th>
+                <th class="text-end">TOTAL</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stock in portfolio %}
+            <tr>
+                <td class="text-start">{{ stock["symbol"] }}</td>
+                <td class="text-start">{{ stock["name"] }}</td>
+                <td class="text-end">{{ stock["shares"] }}</td>
+                <td class="text-start">
+                    <form>
+                        <input class="form-control mx-auto w-auto" type="hidden" id="symbol" name="symbol" value="{{ stock['symbol'] }}">
+                        <input class="form-control mx-auto w-auto" type="hidden" id="shares" name="shares">
+                        <!-- <button class="btn-secondary sell">Sell</button>
+                        <button class="btn-secondary buy">Buy</button> -->
+                    </form>
+                </td>
+                <td class="text-end">${{ stock["price"] }}</td>
+                <td class="text-end">${{ "%.2f"|format(stock["price"] * stock["shares"]) }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td class="border-0 fw-bold text-end" colspan="5">Cash</td>
+                <td class="border-0 text-end">{{ balance }}</td>
+            </tr>
+            <tr>
+                <td class="border-0 fw-bold text-end" colspan="5">TOTAL</td>
+                <td class="border-0 text-end">{{ total }}</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let sell = document.querySelector('.sell');
+            sell.addEventListener('click', function() {
+                let sell_amount = prompt("Enter amount of shares to sell:");
+                if (sell_amount === null) {
+                    return;
+                }
+                document.getElementById("shares").setAttribute('value', sell_amount);
+                document.querySelector('form').setAttribute('method', "post")
+                document.querySelector('form').setAttribute('action', "/sell");
+            });
+
+            let buy = document.querySelector('.buy');
+            buy.addEventListener('click', function() {
+                let buy_amount = prompt("Enter amount of shares to buy:");
+                if (buy_amount === null) {
+                    return;
+                }
+                document.getElementById("shares").setAttribute('value', buy_amount);
+                document.querySelector('form').setAttribute('method', "post")
+                document.querySelector('form').setAttribute('action', "/buy");
+            });
+        });
+
+    </script>
+
+{% endblock %}

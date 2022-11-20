@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <table class="container py-5 text-center table table-striped">
+        <thead>
+            <tr>
+                <th class="text-start">Symbol</th>
+                <th class="text-end">Price</th>
+                <th class="text-end">Shares</th>
+                <th class="text-end">Transaction Total</th>
+                <th class="text-end">Time of Transaction</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in transactions %}
+            <tr>
+                <td class="text-start">{{ row["symbol"] }}</td>
+                <td class="text-end">{{ row["price"] }}</td>
+                <td class="text-end">{{ row["shares"] }}</td>
+                <td class="text-end">${{ "%.2f"|format(row["price"] * row["shares"] * (-1)) }}</td>
+                <td class="text-end">{{ row["time"] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
