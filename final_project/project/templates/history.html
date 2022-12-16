@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+<div>
+    <img class="booklog" src="static/placeholder.jpg" alt="book">
+</div>
+    <table class="container py-5 text-center table table-striped">
+        <thead>
+            <tr>
+                <th class="text-start">Title</th>
+                <th class="text-start">Author</th>
+                <th class="text-center">Date</th>
+                <th class="text-end">Pages Read in Session</th>
+                <th class="text-end">Total Pages Read</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for title in log|sort(attribute='date', reverse = True) %}
+            <tr>
+                <td class="text-start">{{ title["title"] }}</td>
+                <td class="text-start">{{ title["author"] }}</td>
+                <td class="text-center">{{ title["date"] }}</td>
+                <td class="text-end">{{ title["pagesSession"] }}</td>
+                <td class="text-end">{{ title["pagesRead"] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

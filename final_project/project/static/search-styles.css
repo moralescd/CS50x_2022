@@ -1,0 +1,46 @@
+body{
+    text-align: center;
+}
+
+h1, h2{
+    /* font-family: "Courier New";
+    font-weight: bold; */
+    color: SeaGreen;
+}
+
+.shelf-img{
+    height: 200px;
+    /* width: 500px; */
+    /* object-position:0 50%; */
+}
+
+.center {
+    margin: auto;
+    margin-top: 150px;
+  }
+
+.input-group {
+    width: 500px;
+}
+
+#search-box{
+    width: 400px;
+}
+
+
+.btn{
+    background-color: darksalmon;
+    border-color: black;
+}
+
+.results {
+    visibility: hidden;
+}
+
+.text-block {
+    max-height: 250px;
+    object-fit: contain;
+    overflow: auto;
+    background-color: white;
+    color: black;
+}

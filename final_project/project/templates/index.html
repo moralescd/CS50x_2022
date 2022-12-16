@@ -1,0 +1,141 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <div class="section-table">
+    <h3>Currently Reading</h3>
+        <table class="container py-5 text-center table table-striped">
+            <thead>
+                <tr>
+                    <th class="text-start">Title</th>
+                    <th class="text-start">Author</th>
+                    <th class="text-start">Status</th>
+                    <th class="text-center">Log Reading</th>
+                    <th class="text-start">Progress</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for title in shelf|sort(attribute='title') if title.status == 'Currently Reading' %}
+                <tr>
+                    <td class="text-start">{{ title["title"] }}</td>
+                    <td class="text-start">{{ title["author"] }}</td>
+                    <td class="text-start">{{ title["status"] }}</td>
+                        <form action="/log" method="post">
+                            <input type="hidden" id="title" name="title" value="{{ title['title'] }}">
+                            <input type="hidden" id="pageCount" name="pageCount" value="{{ title['pageCount'] }}">
+                            <input type="hidden" id="author" name="author" value="{{ title['author'] }}">
+                                <td class="text-center log">
+                                    <input class="form-control-sm mx-auto w-auto" id="pages" name="pages" placeholder="Total Pages Read" min="1" type="number">
+                                    <input class="form-control-sm mx-auto w-auto" type="date" id="date" name="date">
+                                    <input type="hidden" id="pagesSession" name="pagesSession" value="pages - {{ title['pagesRead'] }}">
+                                    <input type="hidden" id="pagesRead" name="pagesRead" value="{{ title['pagesRead'] }}">
+                                    <button class="btn btn-primary btn-sm" type="submit">Log</button>
+                                </td>
+                        </form>
+                    <td class="text-start">
+                        {{ title['pagesRead'] }}/{{ title['pageCount'] }} Pages Read
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="{{ title['pagesRead'] }} / {{ title['pageCount'] }}" aria-valuemin="0" aria-valuemax="100"
+                            style="min-width: 2em; width: {{ '%.0f'|format((title['pagesRead'] / title['pageCount'])*100) }}%">
+                            {{ "%.0f"|format((title['pagesRead'] / title['pageCount'])*100) }}%
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="border-0 fw-bold text-end" colspan="5"></td>
+                </tr>
+            </tfoot>
+        </table>
+        </div>
+
+    <div class="section-table">
+    <h3>TBR</h3>
+    <table class="container py-5 text-center table table-striped">
+        <thead>
+            <tr>
+                <th class="text-start">Title</th>
+                <th class="text-start">Author</th>
+                <th class="text-start">Status</th>
+                <th class="text-center">Log Reading</th>
+                <th class="text-start">Progress</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for title in shelf|sort(attribute='title') if title.status == 'Want to Read' %}
+            <tr>
+                <td class="text-start">{{ title["title"] }}</td>
+                <td class="text-start">{{ title["author"] }}</td>
+                <td class="text-start">{{ title["status"] }}</td>
+                    <form action="/log" method="post">
+                        <input type="hidden" id="title" name="title" value="{{ title['title'] }}">
+                        <input type="hidden" id="pageCount" name="pageCount" value="{{ title['pageCount'] }}">
+                        <input type="hidden" id="author" name="author" value="{{ title['author'] }}">
+                            <td class="text-center log">
+                                <input class="form-control-sm mx-auto w-auto" id="pages" name="pages" placeholder="Total Pages Read" min="1" type="number">
+                                <input class="form-control-sm mx-auto w-auto" type="date" id="date" name="date">
+                                <input type="hidden" id="pagesSession" name="pagesSession" value="pages - {{ title['pagesRead'] }}">
+                                <input type="hidden" id="pagesRead" name="pagesRead" value="{{ title['pagesRead'] }}">
+                                <button class="btn btn-primary btn-sm" type="submit">Log</button>
+                            </td>
+                    </form>
+                <td class="text-start">
+                    {{ title['pagesRead'] }}/{{ title['pageCount'] }} Pages Read
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="{{ title['pagesRead'] }} / {{ title['pageCount'] }}" aria-valuemin="0" aria-valuemax="100"
+                        style="min-width: 2em; width: {{ '%.0f'|format((title['pagesRead'] / title['pageCount'])*100) }}%">
+                        {{ "%.0f"|format((title['pagesRead'] / title['pageCount'])*100) }}%
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td class="border-0 fw-bold text-end" colspan="5"></td>
+            </tr>
+        </tfoot>
+    </table>
+    </div>
+
+    <div class="section-table">
+    <h3>Read</h3>
+    <table class="container py-5 text-center table table-striped">
+        <thead>
+            <tr>
+                <th class="text-start">Title</th>
+                <th class="text-start">Author</th>
+                <th class="text-start">Status</th>
+                <th class="text-center"></th>
+                <th class="text-start">Read Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for title in shelf|selectattr("readDate")|sort(attribute='readDate', reverse = True) %}
+            <tr>
+                <td class="text-start">{{ title["title"] }}</td>
+                <td class="text-start">{{ title["author"] }}</td>
+                <td class="text-start">{{ title["status"] }}</td>
+                <td class="log">
+                </td>
+                <td class="text-start">{{ title["readDate"] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td class="border-0 fw-bold text-end" colspan="5"></td>
+            </tr>
+        </tfoot>
+    </table>
+    </div>
+
+
+{% endblock %}
