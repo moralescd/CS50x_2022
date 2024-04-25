@@ -2,7 +2,7 @@ $(document).ready(function() {
     var search_results = document.getElementById("search-results");
     var searchUrl = "https://www.googleapis.com/books/v1/volumes?q=";
     var shopUrl = "https://bookshop.org/search?keywords=";
-    var apiKey = "key=AIzaSyANUshqzJRSyueJ1fh6P9Gqf6JM-KWSkWM";
+    var apiKey = "";
     var placeHldr = '<img src="images/placeholder.jpg">';
     var search_data;
 
